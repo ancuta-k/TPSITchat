@@ -35,12 +35,12 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        login_label = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        password_field_L = new javax.swing.JPasswordField();
+        login_label_L = new javax.swing.JLabel();
+        registrati_label_L = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        username_field_L = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -54,23 +54,25 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Non sei registrato?");
 
-        jPasswordField1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PASSWORD", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Calibri", 1, 14))); // NOI18N
+        password_field_L.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        password_field_L.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PASSWORD", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Calibri", 1, 14))); // NOI18N
 
-        login_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/button_login (4).png"))); // NOI18N
-        login_label.addMouseListener(new java.awt.event.MouseAdapter() {
+        login_label_L.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/button_login (4).png"))); // NOI18N
+        login_label_L.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        login_label_L.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                login_labelMouseClicked(evt);
+                login_label_LMouseClicked(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(217, 56, 84));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("R͟e͟g͟i͟s͟t͟r͟a͟t͟i͟");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        registrati_label_L.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        registrati_label_L.setForeground(new java.awt.Color(217, 56, 84));
+        registrati_label_L.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        registrati_label_L.setText("Registrati");
+        registrati_label_L.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registrati_label_L.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                registrati_label_LMouseClicked(evt);
             }
         });
 
@@ -82,29 +84,29 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(160, 160, 160)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(password_field_L, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(167, 167, 167)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(login_label))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(194, 194, 194)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(registrati_label_L, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(login_label_L)))
                 .addGap(165, 165, 165))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(password_field_L, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(login_label)
+                .addComponent(login_label_L)
                 .addGap(66, 66, 66)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(registrati_label_L)
                 .addContainerGap())
         );
 
@@ -115,11 +117,11 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo_chat2.png"))); // NOI18N
 
-        jTextField1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "USERNAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Calibri", 1, 14))); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        username_field_L.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        username_field_L.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "USERNAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Calibri", 1, 14))); // NOI18N
+        username_field_L.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                username_field_LActionPerformed(evt);
             }
         });
 
@@ -131,7 +133,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(158, 158, 158)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(username_field_L, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -140,7 +142,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(username_field_L, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -150,20 +152,20 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void username_field_LActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_field_LActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_username_field_LActionPerformed
 
-    private void login_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_labelMouseClicked
+    private void login_label_LMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_label_LMouseClicked
         Login.this.setVisible(false);
         new LoggedIndex().setVisible(true);
         
-    }//GEN-LAST:event_login_labelMouseClicked
+    }//GEN-LAST:event_login_label_LMouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void registrati_label_LMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrati_label_LMouseClicked
         Login.this.setVisible(false);
         new SignUp().setVisible(true);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_registrati_label_LMouseClicked
 
     /**
      * @param args the command line arguments
@@ -203,12 +205,12 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel login_label;
+    private javax.swing.JLabel login_label_L;
+    private javax.swing.JPasswordField password_field_L;
+    private javax.swing.JLabel registrati_label_L;
+    private javax.swing.JTextField username_field_L;
     // End of variables declaration//GEN-END:variables
 }
