@@ -38,17 +38,39 @@ public class LoggedIndex extends javax.swing.JFrame {
      */
     public LoggedIndex() {
         initComponents();
-        setSize(537, 550);  // Modifica larghezza (width) e altezza (height) secondo le tue esigenze
-        // Imposta la posizione del frame al centro dello schermo
-        setLocationRelativeTo(null);
-        setResizable(false);
+        
         InitArrayList();
     }
+    
     /**
      * @brief: InitArrayList, stub function to initialize contacts and messages
      * @param: void
      * @return: void
      */
+    private void InitArrayList()
+    {
+        LocalUser = "LocalUser";
+        Contacts = new ArrayList<String>();
+        LContacts = new ArrayList<JLabel>();
+        for(int i = 0; i<10;i++)
+        {
+            Contacts.add("Contact"+i);
+        }
+        
+        Messages = new ArrayList<ArrayList<Message>>();
+        for(int i = 0; i<10;i++)
+        {
+            ArrayList<Message> ContMessages = new ArrayList<Message>();
+            for(int j = 0; j<5;j++)
+            {
+                if(j%2 == 0)
+                    ContMessages.add(new Message("Message"+(j*(i+1)),LocalUser));
+                else
+                    ContMessages.add(new Message("Message"+(j*(i+1)),"RemoteUser"));
+            }
+            Messages.add(ContMessages);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,6 +86,7 @@ public class LoggedIndex extends javax.swing.JFrame {
         jPaneChatScreen = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextAreaInputChat = new javax.swing.JTextArea();
+        jButtonSend = new javax.swing.JButton();
         jScrollContacts = new javax.swing.JScrollPane();
         JPanelContacts = new javax.swing.JPanel();
 
@@ -78,7 +101,7 @@ public class LoggedIndex extends javax.swing.JFrame {
         jPaneChatScreen.setLayout(jPaneChatScreenLayout);
         jPaneChatScreenLayout.setHorizontalGroup(
             jPaneChatScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
+            .addGap(0, 415, Short.MAX_VALUE)
         );
         jPaneChatScreenLayout.setVerticalGroup(
             jPaneChatScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,22 +119,39 @@ public class LoggedIndex extends javax.swing.JFrame {
         jTextAreaInputChat.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane3.setViewportView(jTextAreaInputChat);
 
+        jButtonSend.setText("Send");
+        jButtonSend.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonSendMouseClicked(evt);
+            }
+        });
+        jButtonSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSendActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane2))
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         jScrollContacts.setName("JScrollContacts"); // NOI18N
@@ -122,11 +162,11 @@ public class LoggedIndex extends javax.swing.JFrame {
         JPanelContacts.setLayout(JPanelContactsLayout);
         JPanelContactsLayout.setHorizontalGroup(
             JPanelContactsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 242, Short.MAX_VALUE)
+            .addGap(0, 143, Short.MAX_VALUE)
         );
         JPanelContactsLayout.setVerticalGroup(
             JPanelContactsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 521, Short.MAX_VALUE)
+            .addGap(0, 441, Short.MAX_VALUE)
         );
 
         jScrollContacts.setViewportView(JPanelContacts);
@@ -137,18 +177,18 @@ public class LoggedIndex extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollContacts, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollContacts, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
-            .addComponent(jScrollContacts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollContacts)
         );
 
         pack();
@@ -166,7 +206,7 @@ public class LoggedIndex extends javax.swing.JFrame {
         
         JPanelContacts.setLayout(null); //set Layout null to the JPanel contact in order to manage contact position using x,y coordinates
         JPanelContacts.setBackground(Color.LIGHT_GRAY);
-        jScrollContacts.setViewportView(JPanelContacts);
+        //jScrollContacts.setViewportView(JPanelContacts);
         jScrollContacts.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); //set only the vertical scroll
         //Add a contact for each contact saved in the arrayList Contacts
@@ -176,6 +216,22 @@ public class LoggedIndex extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButtonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSendActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSendActionPerformed
+
+    /**
+     * @brief: Send Button Click Handle Function
+     * @param: evt [input0]
+     * @return: void
+     */
+    private void jButtonSendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendMouseClicked
+        // TODO add your handling code here:
+        String sMessage = jTextAreaInputChat.getText();
+        if(sMessage.length()!=0)
+            AddChatText(sMessage, LocalUser);
+    }//GEN-LAST:event_jButtonSendMouseClicked
 
     /**
      * @brief: Contact Mouse Clicked handle function
@@ -201,7 +257,7 @@ public class LoggedIndex extends javax.swing.JFrame {
         //for each message associated to the clicked contact add a message in the JPaneChatScreen
         for(int i = 0; i<Messages.get(JLIdx).size();i++)
         {
-           AddChatText(Messages.get(JLIdx).get(i).getMsg(), Messages.get(JLIdx).get(i).getSender());
+            AddChatText(Messages.get(JLIdx).get(i).getMsg(), Messages.get(JLIdx).get(i).getSender());
         }
     }
     
@@ -308,9 +364,9 @@ public class LoggedIndex extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelContacts;
+    private javax.swing.JButton jButtonSend;
     private javax.swing.JPanel jPaneChatScreen;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollContacts;
@@ -318,8 +374,4 @@ public class LoggedIndex extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextAreaInputChat;
     // End of variables declaration//GEN-END:variables
-
-    private void InitArrayList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
