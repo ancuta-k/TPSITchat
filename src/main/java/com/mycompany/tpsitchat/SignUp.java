@@ -322,6 +322,7 @@ private boolean userExists(Document document, String username) {
             }
         });
     }
+    //fgdgdgd
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel errore_label;
