@@ -3,7 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.tpsitchat;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
 /**
  *
  * @author lucad
@@ -38,6 +56,7 @@ public class SignUp extends javax.swing.JFrame {
         password_field_L = new javax.swing.JPasswordField();
         login_label_R = new javax.swing.JLabel();
         registrati_label_R = new javax.swing.JLabel();
+        errore_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -48,6 +67,11 @@ public class SignUp extends javax.swing.JFrame {
 
         username_field_L.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         username_field_L.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NEW USERNAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Calibri", 1, 14))); // NOI18N
+        username_field_L.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                username_field_LMouseClicked(evt);
+            }
+        });
         username_field_L.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 username_field_LActionPerformed(evt);
@@ -86,6 +110,11 @@ public class SignUp extends javax.swing.JFrame {
 
         password_field_L.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         password_field_L.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NEW PASSWORD", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Calibri", 1, 14))); // NOI18N
+        password_field_L.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                password_field_LMouseClicked(evt);
+            }
+        });
 
         login_label_R.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         login_label_R.setForeground(new java.awt.Color(217, 56, 84));
@@ -100,6 +129,16 @@ public class SignUp extends javax.swing.JFrame {
 
         registrati_label_R.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/button_registrati.png"))); // NOI18N
         registrati_label_R.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registrati_label_R.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registrati_label_RMouseClicked(evt);
+            }
+        });
+
+        errore_label.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        errore_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errore_label.setText("  ");
+        errore_label.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,7 +153,8 @@ public class SignUp extends javax.swing.JFrame {
                         .addGap(160, 160, 160)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(password_field_L, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(password_field_L, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(errore_label, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(191, 191, 191)
                         .addComponent(login_label_R, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -127,7 +167,9 @@ public class SignUp extends javax.swing.JFrame {
                 .addComponent(password_field_L, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(registrati_label_R)
-                .addGap(60, 60, 60)
+                .addGap(18, 18, 18)
+                .addComponent(errore_label)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(login_label_R)
@@ -149,6 +191,105 @@ public class SignUp extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_login_label_RMouseClicked
 
+    private void registrati_label_RMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrati_label_RMouseClicked
+        String username = username_field_L.getText();
+        String password = password_field_L.getText();
+        if (password.equals("") || username.equals("")){
+            errore_label.setText("Completare tutti i campi!");
+        }else{
+            User newUser = new User(username, password);
+
+        try {
+            // Chiama il metodo per scrivere su un file XML
+            writeUserToXML(newUser);
+        } catch (TransformerConfigurationException ex) {
+            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+        // Crea un oggetto User con i dati inseriti
+        
+    }//GEN-LAST:event_registrati_label_RMouseClicked
+
+    private void username_field_LMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_username_field_LMouseClicked
+        errore_label.setText("");
+        username_field_L.setText("");
+    }//GEN-LAST:event_username_field_LMouseClicked
+
+    private void password_field_LMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_password_field_LMouseClicked
+        //errore_label.setText("");
+        password_field_L.setText("");
+    }//GEN-LAST:event_password_field_LMouseClicked
+    private void writeUserToXML(User user) throws TransformerConfigurationException {
+            try {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+
+        // Carica il documento XML esistente o crea uno nuovo se non esiste
+        Document document;
+        File file = new File("src/main/java/com/mycompany/tpsitchat/credenzialidb.xml");
+
+        if (file.exists()) {
+            document = builder.parse(file);
+
+            // Verifica se l'username esiste già nel documento
+            if (userExists(document, user.getUsername())) {
+                username_field_L.setText("");
+                password_field_L.setText("");
+                errore_label.setText("Username già esistente!");
+                return;
+            }
+        } else {
+            username_field_L.setText("");
+            password_field_L.setText("");
+            errore_label.setText("Registrazione effettuata!");
+            document = builder.newDocument();
+            Element rootElement = document.createElement("users");
+            document.appendChild(rootElement);
+           
+        }
+
+        // Crea un nuovo elemento per l'utente
+        Element userElement = document.createElement("user");
+        userElement.setAttribute("username", user.getUsername());
+        userElement.setAttribute("password", user.getPassword());
+
+        // Aggiungi l'utente al documento
+        document.getDocumentElement().appendChild(userElement);
+
+        // Salva il documento su file
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(document);
+
+        // Salva il documento su file
+        StreamResult result = new StreamResult(file);
+
+        transformer.transform(source, result);
+        
+    } catch (ParserConfigurationException | SAXException | IOException | TransformerException e) {
+        e.printStackTrace();
+    }
+}
+
+// Metodo per verificare se l'username esiste già nel documento
+private boolean userExists(Document document, String username) {
+    Node usersNode = document.getDocumentElement();
+
+    for (int i = 0; i < usersNode.getChildNodes().getLength(); i++) {
+        Node userNode = usersNode.getChildNodes().item(i);
+
+        if (userNode.getNodeType() == Node.ELEMENT_NODE) {
+            Element userElement = (Element) userNode;
+
+            String existingUsername = userElement.getAttribute("username");
+            if (existingUsername.equals(username)) {
+                return true; // L'username esiste già
+            }
+        }
+    }
+
+    return false; // L'username non esiste ancora
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -183,6 +324,7 @@ public class SignUp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel errore_label;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

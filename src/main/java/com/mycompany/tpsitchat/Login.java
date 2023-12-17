@@ -3,7 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.tpsitchat;
-
+import java.io.File;
+import javax.swing.JOptionPane;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 /**
  *
  * @author lucad
@@ -38,6 +45,7 @@ public class Login extends javax.swing.JFrame {
         password_field_L = new javax.swing.JPasswordField();
         login_label_L = new javax.swing.JLabel();
         registrati_label_L = new javax.swing.JLabel();
+        errore_label = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         username_field_L = new javax.swing.JTextField();
@@ -76,6 +84,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        errore_label.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        errore_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errore_label.setText("  ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -92,8 +104,11 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(password_field_L, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(186, 186, 186)
-                        .addComponent(registrati_label_L, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(165, 165, 165))
+                        .addComponent(registrati_label_L, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(errore_label, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +117,9 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(password_field_L, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(login_label_L)
-                .addGap(60, 60, 60)
+                .addGap(26, 26, 26)
+                .addComponent(errore_label)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registrati_label_L)
@@ -118,6 +135,11 @@ public class Login extends javax.swing.JFrame {
 
         username_field_L.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         username_field_L.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "USERNAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Calibri", 1, 14))); // NOI18N
+        username_field_L.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                username_field_LMouseClicked(evt);
+            }
+        });
         username_field_L.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 username_field_LActionPerformed(evt);
@@ -156,8 +178,42 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_username_field_LActionPerformed
 
     private void login_label_LMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_label_LMouseClicked
-        Login.this.setVisible(false);
-        new LoggedIndex().setVisible(true);
+        String inputUsername = username_field_L.getText();
+    String inputPassword = new String(password_field_L.getPassword());
+
+    try {
+        File file = new File("src/main/java/com/mycompany/tpsitchat/credenzialidb.xml");
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document document = builder.parse(file);
+
+        NodeList userList = document.getElementsByTagName("user");
+
+        for (int i = 0; i < userList.getLength(); i++) {
+            Node userNode = userList.item(i);
+
+            if (userNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element userElement = (Element) userNode;
+                String storedUsername = userElement.getAttribute("username");
+                String storedPassword = userElement.getAttribute("password");
+
+                if (inputUsername.equals(storedUsername) && inputPassword.equals(storedPassword)) {
+                    // Credenziali corrette, apri il nuovo JFrame o esegui altre operazioni
+                    Login.this.setVisible(false);
+                    new LoggedIndex().setVisible(true);
+                    return;
+                }
+            }
+        }
+
+        // Nessuna corrispondenza trovata
+        errore_label.setText("Credenziali errate!");
+        username_field_L.setText("");
+        password_field_L.setText("");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
         
     }//GEN-LAST:event_login_label_LMouseClicked
 
@@ -165,6 +221,10 @@ public class Login extends javax.swing.JFrame {
         Login.this.setVisible(false);
         new SignUp().setVisible(true);
     }//GEN-LAST:event_registrati_label_LMouseClicked
+
+    private void username_field_LMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_username_field_LMouseClicked
+        errore_label.setText("");
+    }//GEN-LAST:event_username_field_LMouseClicked
 
     /**
      * @param args the command line arguments
@@ -203,6 +263,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel errore_label;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
