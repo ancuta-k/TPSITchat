@@ -148,6 +148,7 @@
     </Container>
     <Container class="javax.swing.JScrollPane" name="jScrollContacts">
       <Properties>
+        <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
         <Property name="name" type="java.lang.String" value="JScrollContacts" noResource="true"/>
       </Properties>
 
@@ -193,11 +194,11 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" pref="28" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" pref="109" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="username_label" min="-2" pref="105" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator1" min="-2" pref="11" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -213,7 +214,7 @@
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel2" max="32767" attributes="0"/>
-                              <Component id="jLabel3" max="32767" attributes="0"/>
+                              <Component id="username_label" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
                       </Group>
@@ -246,7 +247,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="username_label">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Calibri" size="14" style="1"/>
@@ -255,7 +256,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Nome_utente"/>
+                    <Property name="text" type="java.lang.String" value="user"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator1">

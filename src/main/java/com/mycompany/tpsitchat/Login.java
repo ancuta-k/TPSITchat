@@ -200,7 +200,7 @@ public class Login extends javax.swing.JFrame {
                 if (inputUsername.equals(storedUsername) && inputPassword.equals(storedPassword)) {
                     // Credenziali corrette, apri il nuovo JFrame o esegui altre operazioni
                     Login.this.setVisible(false);
-                    new LoggedIndex().setVisible(true);
+                    new LoggedIndex(storedUsername).setVisible(true);
                     return;
                 }
             }
