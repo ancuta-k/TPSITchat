@@ -201,6 +201,7 @@ public class Login extends javax.swing.JFrame {
                     // Credenziali corrette, apri il nuovo JFrame o esegui altre operazioni
                     Login.this.setVisible(false);
                     new LoggedIndex(storedUsername).setVisible(true);
+                    
                     return;
                 }
             }
