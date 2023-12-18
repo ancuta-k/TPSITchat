@@ -38,7 +38,7 @@ public class ServerPanel extends javax.swing.JFrame {
      */
     public ServerPanel() {
         initComponents();
-        setSize(1000, 530);  // Modifica larghezza (width) e altezza (height) secondo le tue esigenze
+        //setSize(1000, 530);  // Modifica larghezza (width) e altezza (height) secondo le tue esigenze
         // Imposta la posizione del frame al centro dello schermo
         setLocationRelativeTo(null);
         setResizable(false);
@@ -147,8 +147,8 @@ public class ServerPanel extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lista, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(lista, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()

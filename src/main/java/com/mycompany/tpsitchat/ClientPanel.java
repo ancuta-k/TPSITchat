@@ -30,7 +30,7 @@ public class ClientPanel extends javax.swing.JFrame {
         
         initComponents();
         connetti();
-        setSize(1000, 800);  // Modifica larghezza (width) e altezza (height) secondo le tue esigenze
+        //setSize(1000, 800);  // Modifica larghezza (width) e altezza (height) secondo le tue esigenze
         // Imposta la posizione del frame al centro dello schermo
         setLocationRelativeTo(null);
         setResizable(false);
@@ -109,7 +109,7 @@ public class ClientPanel extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(invia_label, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(invia_label))
                     .addComponent(lista, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
