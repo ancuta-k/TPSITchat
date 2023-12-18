@@ -37,7 +37,6 @@ public class PannelloServer extends javax.swing.JFrame {
      * Creates new form LoggedIndex
      */
     public PannelloServer() {
-        
         initComponents();
         setSize(1000, 530);  // Modifica larghezza (width) e altezza (height) secondo le tue esigenze
         // Imposta la posizione del frame al centro dello schermo
@@ -126,11 +125,6 @@ public class PannelloServer extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -491,9 +485,6 @@ public class PannelloServer extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PannelloServer().setVisible(true);
-                
-                
-                
             }
         });
     }
