@@ -200,7 +200,13 @@ public class Login extends javax.swing.JFrame {
                 if (inputUsername.equals(storedUsername) && inputPassword.equals(storedPassword)) {
                     // Credenziali corrette, apri il nuovo JFrame o esegui altre operazioni
                     Login.this.setVisible(false);
-                    new LoggedIndex(storedUsername).setVisible(true);
+                    
+                    if (storedUsername.equalsIgnoreCase("admin")){
+                        new ServerPanel().setVisible(true);
+                    } else {
+                        new ClientPanel(storedUsername).setVisible(true);
+                    }
+                    
                     
                     return;
                 }

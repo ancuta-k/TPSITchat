@@ -19,8 +19,8 @@ import java.awt.*;
  *
  * @author lucad
  */
-public class PannelloServer extends javax.swing.JFrame {
-    
+public class ClientPanel extends javax.swing.JFrame {
+    private String utente;
      /*private ArrayList<String> Contacts;
      private ArrayList<JLabel> LContacts;
      private String LocalUser;
@@ -36,14 +36,15 @@ public class PannelloServer extends javax.swing.JFrame {
     /**
      * Creates new form LoggedIndex
      */
-    public PannelloServer() {
+    public ClientPanel(String username) {
+        
         initComponents();
         setSize(1000, 530);  // Modifica larghezza (width) e altezza (height) secondo le tue esigenze
         // Imposta la posizione del frame al centro dello schermo
         setLocationRelativeTo(null);
         setResizable(false);
-       
-        
+        this.utente = username;
+        username_label.setText(utente);
         //InitArrayList();
     }
     
@@ -90,9 +91,7 @@ public class PannelloServer extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextAreaInputChat = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        list1 = new java.awt.List();
         jScrollContacts = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -123,25 +122,6 @@ public class PannelloServer extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-inviato-52.png"))); // NOI18N
         jLabel1.setText(" ");
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-
-        jScrollPane1.setViewportView(jList1);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1))
-        );
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -149,17 +129,20 @@ public class PannelloServer extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(list1, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(list1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -179,12 +162,12 @@ public class PannelloServer extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(217, 56, 84));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/servers.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
 
         username_label.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         username_label.setForeground(new java.awt.Color(255, 255, 255));
         username_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        username_label.setText("SERVER");
+        username_label.setText("user");
         username_label.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
@@ -193,7 +176,7 @@ public class PannelloServer extends javax.swing.JFrame {
         jSeparator1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jSeparator1.setMinimumSize(new java.awt.Dimension(50, 30));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/power-off.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout (3).png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -203,7 +186,7 @@ public class PannelloServer extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Shut down");
+        jLabel5.setText("Logout");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -335,7 +318,7 @@ public class PannelloServer extends javax.swing.JFrame {
                JOptionPane.YES_NO_OPTION,
                JOptionPane.QUESTION_MESSAGE);
          if(result == JOptionPane.YES_OPTION){
-               PannelloServer.this.setVisible(false);
+               ClientPanel.this.setVisible(false);
                new Login().setVisible(true);
             }else if (result == JOptionPane.NO_OPTION){
                
@@ -349,7 +332,7 @@ public class PannelloServer extends javax.swing.JFrame {
                JOptionPane.YES_NO_OPTION,
                JOptionPane.QUESTION_MESSAGE);
          if(result == JOptionPane.YES_OPTION){
-               PannelloServer.this.setVisible(false);
+               ClientPanel.this.setVisible(false);
                new Login().setVisible(true);
             }else if (result == JOptionPane.NO_OPTION){
                
@@ -456,13 +439,17 @@ public class PannelloServer extends javax.swing.JFrame {
         JPanelContacts.add(JPSingleContact);
         //resize the jpanel scroll bar considering the new added contact
         JPanelContacts.setPreferredSize(new Dimension(70, ContatIdx*ContactHeight+ContactHeight));
+       */
     }
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+   
+       
+      
+       
+       
+       
+       
+      
+         /*public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -481,29 +468,30 @@ public class PannelloServer extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-        /* Create and display the form */
+         Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PannelloServer().setVisible(true);
+                new LoggedIndex(utente).setVisible(true);
+                
+                
+                
             }
         });
-    }
+    }*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollContacts;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextAreaInputChat;
+    private java.awt.List list1;
     private javax.swing.JLabel username_label;
     // End of variables declaration//GEN-END:variables
 }
