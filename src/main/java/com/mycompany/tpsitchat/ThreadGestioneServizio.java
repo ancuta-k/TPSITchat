@@ -21,7 +21,7 @@ public class ThreadGestioneServizio implements Runnable{
     private ServerSocket serverChat;
     
     public ThreadGestioneServizio(int numeroMaxConnessioni,List lista){
-        this.nrMaxConnessioni = nrMaxConnessioni - 1;
+        this.nrMaxConnessioni = 10;
         this.lista = lista;
        this.listaConnessioni = new ThreadChatConnessioni[this.nrMaxConnessioni];
        me = new Thread(this);
