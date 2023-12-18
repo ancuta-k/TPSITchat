@@ -21,21 +21,8 @@ import java.awt.*;
  */
 public class ServerPanel extends javax.swing.JFrame {
     private ThreadGestioneServizio gestioneServizio;
-     /*private ArrayList<String> Contacts;
-     private ArrayList<JLabel> LContacts;
-     private String LocalUser;
-     private ArrayList<ArrayList<Message>> Messages;
-     private int fixedMessageYOffset = 25;
-     private int YLastMessage = 0;
-     private final int MaxMessageWidth = 170;
-     private final int RemoteSenderStartOffsetMessage = 200;
-     private final int LocalSenderStartOffsetMessage = 0;
-     private int SingleLineMessageHeight = 18;
-     private final int ContactHeight = 50;
-     private final int ContactWidth = 170;
-    /**
-     * Creates new form LoggedIndex
-     */
+     
+   
     public ServerPanel() {
         initComponents();
         //setSize(1000, 530);  // Modifica larghezza (width) e altezza (height) secondo le tue esigenze
@@ -55,30 +42,7 @@ public class ServerPanel extends javax.swing.JFrame {
      * @param: void
      * @return: void
      */
-    /*private void InitArrayList()
-    {
-        LocalUser = "LocalUser";
-        Contacts = new ArrayList<String>();
-        LContacts = new ArrayList<JLabel>();
-        for(int i = 0; i<10;i++)
-        {
-            Contacts.add("Contact"+i);
-        }
-        
-        Messages = new ArrayList<ArrayList<Message>>();
-        for(int i = 0; i<10;i++)
-        {
-            ArrayList<Message> ContMessages = new ArrayList<Message>();
-            for(int j = 0; j<5;j++)
-            {
-                if(j%2 == 0)
-                    ContMessages.add(new Message("Message"+(j*(i+1)),LocalUser));
-                else
-                    ContMessages.add(new Message("Message"+(j*(i+1)),"RemoteUser"));
-            }
-            Messages.add(ContMessages);
-        }
-    }*/
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -303,16 +267,7 @@ public class ServerPanel extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         
-        /*JPanelContacts.setLayout(null); //set Layout null to the JPanel contact in order to manage contact position using x,y coordinates
-        JPanelContacts.setBackground(Color.LIGHT_GRAY);
-        //jScrollContacts.setViewportView(JPanelContacts);
-        jScrollContacts.setVerticalScrollBarPolicy(
-                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); //set only the vertical scroll
-        //Add a contact for each contact saved in the arrayList Contacts
-        for(int i = 0; i<Contacts.size(); i++)
-        {
-            AddContact(Contacts.get(i),LContacts.size());
-        }*/
+        
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -356,26 +311,7 @@ public class ServerPanel extends javax.swing.JFrame {
      */
     private void jLableIMouseClicked(java.awt.event.MouseEvent evt) {                                      
         
-        /*jTextAreaInputChat.setEditable(true);
-        YLastMessage = 0;  // reset the Last Message y coordinate
-        //remove all message in Jpanel Chat screen and refresh it
-        jPaneChatScreen.removeAll(); 
-        jPaneChatScreen.revalidate();
-        jPaneChatScreen.repaint();
-        ////set Layout null to the JPanel contact in order to manage messages position using x,y coordinates
-        jPaneChatScreen.setLayout(null);
-        jPaneChatScreen.setBackground(Color.LIGHT_GRAY);
-        jPaneChatScreen.setAutoscrolls(true);
-        //get the event source (the initiator of the event, to understand which contact has been clicked)
-        JLabel name = (JLabel)evt.getSource();
-        //the name has been set as the index of the Messages arrayList in witch it has been added
-        int JLIdx = Integer.parseInt(name.getName());
-        //for each message associated to the clicked contact add a message in the JPaneChatScreen
-        for(int i = 0; i<Messages.get(JLIdx).size();i++)
-        {
-            AddChatText(Messages.get(JLIdx).get(i).getMsg(), Messages.get(JLIdx).get(i).getSender());
-        }
-    }
+        
     
     /**
      * @brief: Add a message to the Chat Message area
@@ -384,36 +320,7 @@ public class ServerPanel extends javax.swing.JFrame {
      */
   
     
-        //create a new label with the message (this structure has been used just as app variable in order to understand the length of the message in pixel unit)
-       /* JLabel MessLabelApp = new JLabel(text);
-        //create a JtextArea not editable to add in the Chat screen
-        JTextArea MessTextArea = new JTextArea(text);
-        MessTextArea.setEditable(false);
-        MessTextArea.setBorder(null);
-        //set the text area with the line wrap in order to fix the width and perform an endline on long message
-        MessTextArea.setWrapStyleWord(true);
-        MessTextArea.setLineWrap(true);
-        // set the color of the messageText and set it as opaque
-        MessTextArea.setBackground(Color.GREEN);
-        MessTextArea.setOpaque(true);
-        //Choose the position of the added text considering the last message text to chose the right y coodinate
-        //and the sender to chose the right x coordinate
-        if(sender.equals(LocalUser))
-            MessTextArea.setBounds(LocalSenderStartOffsetMessage, YLastMessage, MaxMessageWidth, (SingleLineMessageHeight*((MessLabelApp.getPreferredSize().width/MaxMessageWidth)+1)));
-        else
-            MessTextArea.setBounds(RemoteSenderStartOffsetMessage, YLastMessage, MaxMessageWidth, (SingleLineMessageHeight*((MessLabelApp.getPreferredSize().width/MaxMessageWidth)+1)));
-        jPaneChatScreen.add(MessTextArea);
-
-        //update the last y coordinate of the message
-        YLastMessage+= (SingleLineMessageHeight*((MessLabelApp.getPreferredSize().width/MaxMessageWidth)+1) + fixedMessageYOffset);
-        //update the y size of the scroll bar
-        jPaneChatScreen.setPreferredSize(new Dimension(319, YLastMessage+SingleLineMessageHeight));
-        jPaneChatScreen.revalidate();
-        jPaneChatScreen.repaint();
-        //clear the input text area
-        jTextAreaInputChat.selectAll();
-        jTextAreaInputChat.replaceSelection("");
-    }
+       
 
     /**
      * @brief: Add a new contact to the contact scroll bar
@@ -423,31 +330,7 @@ public class ServerPanel extends javax.swing.JFrame {
      */
 
     /*
-        //Add the new contact in an arrayList of JLable
-        LContacts.add(new JLabel(contact));
-        //Set the JLable name as the index value of the arraylist
-        LContacts.get(ContatIdx).setName(String.valueOf(ContatIdx));
-        //set the contact Jlable size
-        LContacts.get(ContatIdx).setBounds(0,0,ContactWidth,ContactHeight);
-        //Add a listener to trigger the click contact event
-        LContacts.get(ContatIdx).addMouseListener(new java.awt.event.MouseAdapter() {
-            
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                
-                jLableIMouseClicked(evt);
-            }
-        });
-        //Add a new jpanel to the contact scroll bar
-        JPanel JPSingleContact = new JPanel();
-        JPSingleContact.setLayout(null);
-        JPSingleContact.setBackground(Color.WHITE);
-        JPSingleContact.setBounds(0,ContatIdx*ContactHeight,ContactWidth,ContactHeight);
-        JPSingleContact.setBorder(new LineBorder(Color.RED));
-        JPSingleContact.add(LContacts.get(ContatIdx));
-        JPanelContacts.add(JPSingleContact);
-        //resize the jpanel scroll bar considering the new added contact
-        JPanelContacts.setPreferredSize(new Dimension(70, ContatIdx*ContactHeight+ContactHeight));
-    }
+      
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
