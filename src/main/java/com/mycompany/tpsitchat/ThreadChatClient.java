@@ -18,7 +18,7 @@ public class ThreadChatClient implements Runnable{
     private BufferedReader input = null;
     private PrintWriter output = null;
     
-    public ThreadChatClient(List lista,String ipServer, int porta){
+    public ThreadChatClient(List lista, String ipServer, int porta){
         this.lista= lista;
         try{
             client = new Socket(ipServer,porta);
@@ -42,7 +42,7 @@ public class ThreadChatClient implements Runnable{
                 lista.add(mess);
                 lista.select(lista.getItemCount()-1);
             } catch(Exception e){
-                
+                System.out.println("r.45 tcclient");
             }
         }
     }
@@ -51,7 +51,7 @@ public class ThreadChatClient implements Runnable{
         try{
             output.println(mess); 
         } catch(Exception e) {
-            
+            System.out.println("r.56 tcclient");
         }
     }
 }

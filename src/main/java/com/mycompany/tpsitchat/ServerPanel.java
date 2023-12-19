@@ -55,9 +55,9 @@ public class ServerPanel extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         invia_label = new javax.swing.JLabel();
-        lista = new java.awt.List();
         jScrollPane3 = new javax.swing.JScrollPane();
         textarea = new javax.swing.JTextArea();
+        lista = new java.awt.List();
         jScrollContacts = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -100,25 +100,24 @@ public class ServerPanel extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lista, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lista, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(invia_label, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(invia_label, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lista, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lista, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(invia_label)))
-                .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(invia_label)
+                        .addGap(12, 12, 12)))
+                .addGap(14, 14, 14))
         );
 
         jScrollContacts.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -215,7 +214,7 @@ public class ServerPanel extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 634, Short.MAX_VALUE)
+            .addGap(0, 1010, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -244,7 +243,7 @@ public class ServerPanel extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollContacts, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollContacts, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -300,7 +299,7 @@ public class ServerPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void invia_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invia_labelMouseClicked
-       gestioneServizio.spedisciMessaggio(textarea.getText());
+       gestioneServizio.spedisciMessaggio("SERVER :"+textarea.getText());
        textarea.setText("");
     }//GEN-LAST:event_invia_labelMouseClicked
 
@@ -312,7 +311,7 @@ public class ServerPanel extends javax.swing.JFrame {
     private void jLableIMouseClicked(java.awt.event.MouseEvent evt) {                                      
         
         
-    
+    }
     /**
      * @brief: Add a message to the Chat Message area
      * @param text [input]: the mesasage text to add
@@ -336,7 +335,7 @@ public class ServerPanel extends javax.swing.JFrame {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+         
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -355,13 +354,14 @@ public class ServerPanel extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-        /* Create and display the form */
+         Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ServerPanel().setVisible(true);
             }
         });
     }
+    */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel invia_label;
     private javax.swing.JLabel jLabel2;

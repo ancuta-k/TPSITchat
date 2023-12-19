@@ -23,6 +23,7 @@ public class ThreadChatConnessioni implements Runnable{
         this.client = client;
         try{
             this.input = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            this.output = new PrintWriter(this.client.getOutputStream(),true);
         } catch (Exception e){
             output.println("errore lettura");
         }
