@@ -42,7 +42,7 @@ public class ClientPanel extends javax.swing.JFrame {
     
     
     public void connetti(){
-        gestioneServizio = new ThreadChatClient(lista, "localhost", 6789);
+        gestioneServizio = new ThreadChatClient(lista, "localhost", 6789,utente);
     }
     /**
      * @brief: InitArrayList, stub function to initialize contacts and messages
@@ -99,6 +99,8 @@ public class ClientPanel extends javax.swing.JFrame {
             }
         });
 
+        lista.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lista.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         lista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listaActionPerformed(evt);
@@ -112,17 +114,16 @@ public class ClientPanel extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lista, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(invia_label))
-                    .addComponent(lista, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                        .addComponent(invia_label))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lista, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                .addComponent(lista, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -312,14 +313,17 @@ public class ClientPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void invia_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invia_labelMouseClicked
-       gestioneServizio.spedisciMessaggioChat(utente+": "+textarea.getText());
+       gestioneServizio.spedisciMessaggioChat(utente+" : "+textarea.getText());
        textarea.setText("");
     }//GEN-LAST:event_invia_labelMouseClicked
 
     private void listaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listaActionPerformed
-
+    
+    public void scriviuser(){
+        
+    }
     /**
      * @brief: Contact Mouse Clicked handle function
      * @param evt [input]

@@ -21,6 +21,7 @@ import java.awt.*;
  */
 public class ServerPanel extends javax.swing.JFrame {
     private ThreadGestioneServizio gestioneServizio;
+    
      
    
     public ServerPanel() {
@@ -93,6 +94,8 @@ public class ServerPanel extends javax.swing.JFrame {
         textarea.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane3.setViewportView(textarea);
 
+        lista.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -104,19 +107,20 @@ public class ServerPanel extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(invia_label, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(invia_label))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lista, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(invia_label)
-                        .addGap(12, 12, 12)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(invia_label)))
                 .addGap(14, 14, 14))
         );
 
@@ -271,7 +275,7 @@ public class ServerPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-         int result = JOptionPane.showConfirmDialog(null,"Sei sicuro di voler effettuare il logout?", "Conferma Logout",
+         int result = JOptionPane.showConfirmDialog(null,"Sei sicuro di voler spegnere il server?", "Conferma Shutdown",
                JOptionPane.YES_NO_OPTION,
                JOptionPane.QUESTION_MESSAGE);
          if(result == JOptionPane.YES_OPTION){
@@ -285,7 +289,7 @@ public class ServerPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        int result = JOptionPane.showConfirmDialog(null,"Sei sicuro di voler effettuare il logout?", "Conferma Logout",
+        int result = JOptionPane.showConfirmDialog(null,"Sei sicuro di voler spegnere il server?", "Conferma Shutdown",
                JOptionPane.YES_NO_OPTION,
                JOptionPane.QUESTION_MESSAGE);
          if(result == JOptionPane.YES_OPTION){
@@ -299,7 +303,7 @@ public class ServerPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void invia_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invia_labelMouseClicked
-       gestioneServizio.spedisciMessaggio("SERVER :"+textarea.getText());
+       gestioneServizio.spedisciMessaggio("SERVER : "+textarea.getText());
        textarea.setText("");
     }//GEN-LAST:event_invia_labelMouseClicked
 

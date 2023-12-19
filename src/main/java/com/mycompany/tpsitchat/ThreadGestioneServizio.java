@@ -7,6 +7,7 @@ package com.mycompany.tpsitchat;
 import java.awt.List;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,9 +19,12 @@ public class ThreadGestioneServizio implements Runnable{
     private List lista;
     private ThreadChatConnessioni[] listaConnessioni;
     Thread me;
+    private String utente;
+    private ArrayList<String> arr;
     private ServerSocket serverChat;
     
     public ThreadGestioneServizio(int numeroMaxConnessioni,List lista){
+        this.utente = utente;
         this.nrMaxConnessioni = 10;
         this.lista = lista;
        this.listaConnessioni = new ThreadChatConnessioni[this.nrMaxConnessioni];
@@ -62,4 +66,6 @@ public class ThreadGestioneServizio implements Runnable{
            }
         }
     }
+    
+   
 }
