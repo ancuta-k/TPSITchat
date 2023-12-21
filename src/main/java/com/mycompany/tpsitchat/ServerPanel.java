@@ -21,6 +21,7 @@ import java.awt.*;
  */
 public class ServerPanel extends javax.swing.JFrame {
     private ThreadGestioneServizio gestioneServizio;
+    private boolean sv=true;
     
      
    
@@ -286,6 +287,7 @@ public class ServerPanel extends javax.swing.JFrame {
             }else {
                
             }
+            
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked

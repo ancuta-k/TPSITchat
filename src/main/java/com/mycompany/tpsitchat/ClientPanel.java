@@ -313,8 +313,13 @@ public class ClientPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void invia_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invia_labelMouseClicked
-       gestioneServizio.spedisciMessaggioChat(utente+" : "+textarea.getText());
-       textarea.setText("");
+       if (textarea.getText().equalsIgnoreCase("")) {
+           JOptionPane.showMessageDialog(null,"Devi scrivere qualcosa per poter inviare un messaggio!");
+       } else {
+           gestioneServizio.spedisciMessaggioChat(utente+" : "+textarea.getText());
+            textarea.setText("");
+       }
+        
     }//GEN-LAST:event_invia_labelMouseClicked
 
     private void listaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaActionPerformed

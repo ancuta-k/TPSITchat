@@ -212,6 +212,8 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         }
+        
+        
 
         // Nessuna corrispondenza trovata
         errore_label.setText("Credenziali errate!");
